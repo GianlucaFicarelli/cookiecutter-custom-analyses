@@ -41,31 +41,30 @@ The script directory should contain at least the following files:
 Automation
 ----------
 
-To generate or update ``requirements.txt`` for a specific analysis, replace ``analysis_00`` with the desired subdirectory in ``src`` and run::
+- To generate or update ``requirements.txt`` for a specific analysis, replace ``analysis_00`` with the name of the desired subdirectory under ``src`` and run::
 
     PACKAGE=analysis_00 tox -e freeze
 
-To run tests for a specific analysis, replace ``analysis_00`` with the desired subdirectory in ``src`` and run::
+- To run tests for a specific analysis, replace ``analysis_00`` with the name of the desired subdirectory under ``src`` and run::
 
     PACKAGE=analysis_00 tox -e test
 
-To format the code with ``isort`` and ``black``, run::
-
-    tox -e format
-
-To check the code with ``isort`` and ``black``, run::
-
-    tox -e lint
-
-To run a specific analysis, replace ``analysis_00`` with the desired subdirectory in ``src`` and run::
+- To run a specific analysis, replace ``analysis_00`` with the name of the desired subdirectory under ``src`` and run::
 
     PACKAGE=analysis_00 tox -e run analysis_config.json analysis_output.json
 
-Alternatively, if you already have setup a virtualenv, you can run::
+  Alternatively, if you already have setup a virtualenv, you can run::
 
    /path/to/bin/run.sh analysis_00 analysis_config.json analysis_output.json
 
-or::
+  or::
 
     PYTHONPATH=/path/to/src python /path/to/src/analysis_00/run.py analysis_config.json analysis_output.json
 
+- To format the code with ``isort`` and ``black``, run::
+
+    tox -e format
+
+- To check the code with ``isort`` and ``black``, run::
+
+    tox -e lint
