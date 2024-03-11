@@ -15,9 +15,22 @@ Each script should live in a separate directory under ``src``.
 The script directory should contain at least the following files:
 
 - ``run.py`` (required): the main python script that's going to be called to run the analysis.
-  To avoid repeating the same code in multiple scripts, it's possible to decorate the main function with the decorator ``run_analysis`` found in ``common``.
+
+  The script will be called as::
+
+    python run.py analysis_config.json analysis_output.json
+
+  where:
+
+  - ``analysis_config.json`` is the path to the configuration file in json format.
+  - ``analysis_output.json`` is the path to the output file that should be created by the script.
+
+  The content of the input and output files may depend on the type of the analysis.
+  However, in general, the output file is expected to contain a dictionary with at least the key ``outputs``, that's a list of metadata dictionaries, one for each artefact produced by the script.
+
+  To avoid repeating the same code reading from the input file and writing to the output file, it's possible to decorate the main function with the decorator ``run_analysis`` found in ``common``.
   The decorated function should then accept a configuration dict in input, and return a metadata dict as output.
-  The content of the input and output dictionaries may depend on the type of the analysis.
+
   Example::
 
     from common.utils import run_analysis
